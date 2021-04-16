@@ -1,0 +1,29 @@
+{
+  "name": "v1-subgraph-youswap",
+  "version": "1.0.0",
+  "repository": "https://github.com/Youswap/v1-subgraph-youswap",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "codegen": "graph codegen -o src/types/",
+    "build": "graph build ",
+    "build_test":   "graph build -i http://54.254.0.89:5001 --debug",
+    "create_test":  "graph create ropsten -g http://54.254.0.89:8020/deploy --debug",
+    "deploy_test":  "graph deploy ropsten -i http://54.254.0.89:5001 -g http://54.254.0.89:8020/deploy --debug",
+    "remove_test":  "graph remove ropsten -i http://54.254.0.89:5001 -g http://54.254.0.89:8020/deploy --debug",
+
+    "remove-local": "graph remove ropsten -g http://127.0.0.1:8020",
+    "create-local": "graph create ropsten -g http://127.0.0.1:8020",
+    "deploy-local": "graph deploy ropsten -g http://127.0.0.1:8020 -i http://127.0.0.1:5001 --debug ",
+     "watch-local": "graph deploy ropsten -g http://127.0.0.1:8020 -i http://127.0.0.1:5001 --debug -w"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.16.0",
+    "@graphprotocol/graph-ts": "^0.16.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.2"
+  }
+}

@@ -1,0 +1,17 @@
+type RelationShip @entity {
+  id: ID!
+  owner: String!
+  address: String!
+  type0: String!
+  type1: String!
+  amount: BigDecimal!
+  height: BigInt!
+}
+
+
+type Count @entity {
+  id: ID!
+  total: BigInt!
+  one: BigInt!
+  two: BigInt!
+}

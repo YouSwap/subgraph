@@ -1,0 +1,24 @@
+{
+  "name": "relationship",
+  "version": "0.0.1",
+  "repository": "https://github.com/youswap/v1-subgraph-relationship",
+  "license": "MIT",
+  "scripts": {
+    "codegen": "graph codegen -o src/types/ ",
+    "build_test":   "graph build -i http://54.254.0.89:5001 --debug",
+    "create_test":  "graph create relation -g http://54.254.0.89:8020/deploy --debug",
+    "deploy_test":  "graph deploy relation -i http://54.254.0.89:5001 -g http://54.254.0.89:8020/deploy --debug",
+    "remove_test":  "graph remove relation -i http://54.254.0.89:5001 -g http://54.254.0.89:8020/deploy --debug",
+    "build":   "graph build -i http://127.0.0.1:5001 --debug",
+    "create":  "graph create relation -g http://127.0.0.1:8020/deploy --debug",
+    "deploy":  "graph deploy relation -i http://127.0.0.1:5001 -g http://127.0.0.1:8020/deploy --debug",
+    "watch":   "graph deploy relation -i http://127.0.0.1:5001 -g http://127.0.0.1:8020/deploy --debug -w",
+    "remove":  "graph remove relation -i http://127.0.0.1:5001 -g http://127.0.0.1:8020/deploy --debug"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.16.0",
+    "@graphprotocol/graph-ts": "^0.16.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0"
+  }
+}

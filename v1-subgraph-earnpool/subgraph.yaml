@@ -1,0 +1,43 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Earnpool
+    network: mainnet
+    source:
+      address: "0x0604f2781ef5712130af4d941cb79257513d1693"
+      abi: Earnpool
+      startBlock: 12113170
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EndPool
+        - Mint
+        - Stake
+        - UnStake
+        - UpdatePool
+        - WithdrawReward
+      abis:
+        - name: Earnpool
+          file: ./abis/Earnpool.json
+      eventHandlers:
+        - event: EndPool(uint256,indexed address)
+          handler: handleEndPool
+        - event: InviteRegister(indexed address)
+          handler: handleInviteRegister
+        - event: Mint(uint256,indexed address,uint256)
+          handler: handleMint
+        - event: Stake(uint256,indexed address,indexed address,uint256)
+          handler: handleStake
+        - event: UnStake(uint256,indexed address,indexed address,uint256)
+          handler: handleUnStake
+        - event: UpdatePool(bool,uint256,indexed address,string,uint256,uint256,uint256,uint256,uint256)
+          handler: handleUpdatePool
+        - event: UpdatePower(uint256,address,uint256,indexed address,uint256,uint256,indexed address,uint256,indexed address,uint256)
+          handler: handleUpdatePower
+        - event: WithdrawReward(uint256,indexed address,indexed address,uint256)
+          handler: handleWithdrawReward
+      file: ./src/mapping.ts

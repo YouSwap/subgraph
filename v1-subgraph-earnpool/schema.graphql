@@ -1,0 +1,50 @@
+type Pool @entity {
+  id: ID!
+  poolid: BigInt!
+  pool: String!
+  lpaddress: String!
+  poolname:  String!
+  startblockheight: BigInt!
+  rewardtotal: BigInt!
+  rewardperblock: BigInt!
+  rewardmultiple: BigInt!
+  priority: BigInt!
+
+  isfinshed: Boolean!   #默认false
+  staketotaldnow: BigInt!
+  rewardcanwithdrawnow: BigInt!
+  totalpower: BigInt
+  user: [PoolUser!]           @derivedFrom(field: "user")
+  poollist: [UserPoolList!]   @derivedFrom(field: "pool")
+}
+
+type PoolUser @entity {
+  id: ID!   #地址
+  address:  String!
+  user:     [Pool!]
+  poolsinfo: [UserPoolList!]   @derivedFrom(field: "user")
+}
+
+type  UserPoolList @entity {
+  id: ID!     #pooladdr+useraddr
+  user:   PoolUser!
+  pool:  Pool!
+  stake:  BigInt!
+  stakepower: BigInt!
+  invitepower: BigInt!
+  rewardbalance:  BigInt!
+  rewardsT:   BigInt!
+  rewardwithdrawT:  BigInt!
+}
+
+type AllPoolInfo @entity {
+  id: ID!
+  rewardstotal:     BigInt!
+  rewardswithdrawT: BigInt!
+}
+
+
+type InviteRegisterRecord @entity {
+  id: ID!
+  address: String!
+}

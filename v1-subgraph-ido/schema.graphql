@@ -1,0 +1,23 @@
+type Ido @entity {
+  id: ID!
+  user: IdoUser!
+  type: String!
+  address:  String!
+  usdtpayed: BigDecimal!
+  usdtused: BigDecimal!
+  yougoted: BigDecimal!
+  transaciton:  String!
+  blockheight:  BigInt!
+  timestmp:  BigInt!
+  state:  String!
+}
+
+type IdoUser @entity {
+  id: ID!
+  address: String!
+  pubcanclaim: Boolean!
+  pricanclaim: Boolean!
+  pubtotalusdtpayed: BigDecimal!
+  idoslist: [String!]
+  idos: [Ido!] @derivedFrom(field: "user")
+}
