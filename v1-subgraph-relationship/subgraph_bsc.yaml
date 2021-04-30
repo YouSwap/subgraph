@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+description: RelationShip for Ethereum
+repository: https://github.com/youswap/v1-subgraph-relationship
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: RelationShip
+    network: bscnet
+    source:
+      address: "0xe71f923f8032cede47db1d73611370ba24fdf53b"
+      abi: RelationShip
+      startBlock: 6929901
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      eventHandlers:
+        - event: InviteV1(indexed address,indexed address,indexed uint256)
+          topic0: "0x09eaeed4c048452d0089134abaf2d036f2db1ba99ae25e87081bc0a787fc0d93"
+          handler: handleRelationShip
+      file: ./src/mappings/mapping.ts
+      entities:
+        - RelationShip
+      abis:
+        - name: RelationShip
+          file: ./abis/RelationShip.abi
