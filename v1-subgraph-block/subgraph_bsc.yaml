@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+description: Indexing all Ethereum Block data
+# github 地址
+repository: https://www.github.com/youswap/v1-subgraph-block
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ConverterRegistryContract
+    network: bscnet
+    source:
+      address: "0x37929b9a9d8f2a6dff6021d13622a1c372eb9e0c"
+      abi: ConverterRegistryContract
+      startBlock: 6319919
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - ConverterAddition
+      abis:
+        - name: ConverterRegistryContract
+          file: ./abis/ConverterRegistryContract.json
+      blockHandlers:
+        - handler: handleBlock
+      file: ./src/mappings/blocks.ts
